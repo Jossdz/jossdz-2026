@@ -1,7 +1,28 @@
 ---
-import "./styles/global.css";
+import "@/styles/global.css";
+import LineWaves from "@/components/LineWaves";
+import Layout from "@/layouts/Layout.astro";
 ---
 
-<h1 class="text-3xl font-bold underline">
-  Hello world!
-</h1>
+<Layout>
+  <div class="">
+    <div class="w-screen relative h-screen bg-shadow-grey">
+      <LineWaves
+        client:load
+        brightness={0.2}
+        color1="#7ac0d8"
+        color2="#7ac0d8"
+        color3="#7ac0d8"
+        colorCycleSpeed={1}
+        edgeFadeWidth={0}
+        enableMouseInteraction={false}
+        innerLineCount={36}
+        mouseInfluence={2}
+        outerLineCount={19}
+        rotation={-46}
+        speed={0.2}
+        warpIntensity={2.4}
+      />
+    </div>
+  </div>
+</Layout>
