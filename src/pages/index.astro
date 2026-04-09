@@ -2,29 +2,58 @@
 import "@/styles/global.css";
 import LineWaves from "@/components/LineWaves";
 import Layout from "@/layouts/Layout.astro";
+import SplitText from "@/components/SplitText";
 ---
 
 <Layout>
-  <div class="">
-    <div class="w-screen relative h-screen bg-shadow-grey">
-      <LineWaves
-        client:load
-        brightness={0.2}
-        color1="#7ac0d8"
-        color2="#7ac0d8"
-        color3="#7ac0d8"
-        colorCycleSpeed={1}
-        edgeFadeWidth={0}
-        enableMouseInteraction={false}
-        innerLineCount={36}
-        mouseInfluence={2}
-        outerLineCount={19}
-        rotation={-46}
-        speed={0.2}
-        warpIntensity={2.4}
-      />
-    </div>
+  <div class="w-full relative h-screen bg-shadow-grey">
+    <LineWaves
+      client:load
+      brightness={0.2}
+      color1="#43627c"
+      color2="#365571"
+      color3="#2c4a63"
+      colorCycleSpeed={1}
+      edgeFadeWidth={0}
+      enableMouseInteraction={false}
+      innerLineCount={36}
+      mouseInfluence={2}
+      outerLineCount={19}
+      rotation={-46}
+      speed={0.2}
+      warpIntensity={2.4}
+    />
+    <div
+      class="w-full text-center absolute top-1/2 left-0 translate-y-[calc(-50%-50px)]"
+    >
+      <h1 class="text-8xl font-extrabold text-ghost-white mb-4">
+        Jose Carlos Correa
+      </h1>
 
-    <div class="w-screen h-6 bg-shadow-grey"></div>
+      <h2 class="text-4xl font-bold text-ghost-white opacity-85">
+        Web Engineer | Tech Enthusiast | Educator
+      </h2>
+    </div>
+    <div
+      class="bg-linear-to-t from-shadow-grey to-transparent h-12.5 absolute bottom-0 left-0 right-0"
+    >
+    </div>
+  </div>
+
+  <div class="w-full min-h-screen bg-shadow-grey">
+    <SplitText
+      client:idle
+      text="Hello, you!"
+      className="text-2xl font-semibold text-center text-ghost-white "
+      delay={50}
+      duration={1.25}
+      ease="elastic.out(1, 0.3)"
+      splitType="chars"
+      from={{ opacity: 0, y: 40 }}
+      to={{ opacity: 1, y: 0 }}
+      threshold={0.1}
+      rootMargin="-100px"
+      textAlign="center"
+    />
   </div>
 </Layout>
