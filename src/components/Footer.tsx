@@ -16,16 +16,16 @@ const socials = [
     href: "https://x.com/jossdz",
     icon: FaXTwitter,
   },
-  {
-    label: "YouTube",
-    href: "https://youtube.com/@jossdz",
-    icon: FaYoutube,
-  },
+  // {
+  //   label: "YouTube",
+  //   href: "https://youtube.com/@jossdz",
+  //   icon: FaYoutube,
+  // },
 ];
 
 export function Footer() {
   return (
-    <footer className="w-full bg-shadow-grey border-t border-white/5 py-10 pb-30">
+    <footer className="w-full bg-shadow-grey border-t border-white/5 pt-16 pb-28">
       <div className="container mx-auto px-6 flex flex-col items-center gap-6">
         <ul className="flex items-center gap-6">
           {socials.map(({ label, href, icon: Icon }) => (
