@@ -30,7 +30,7 @@ const CurvedLoop: FC<CurvedLoopProps> = ({
   const [offset, setOffset] = useState(0);
   const uid = useId();
   const pathId = `curve-${uid}`;
-  const pathD = `M-100,40 Q500,${40 + curveAmount} 1540,40`;
+  const pathD = `M0,40 Q720,${40 + curveAmount} 1440,40`;
 
   const dragRef = useRef(false);
   const lastXRef = useRef(0);
@@ -118,8 +118,8 @@ const CurvedLoop: FC<CurvedLoopProps> = ({
       onPointerLeave={endDrag}
     >
       <svg
-        className="select-none w-full overflow-visible block aspect-[100/12] text-[6rem] font-bold uppercase leading-none"
-        viewBox="0 0 1440 120"
+        className="select-none w-full overflow-visible block aspect-[100/15] text-[6rem] font-bold uppercase leading-none"
+        viewBox="0 0 1440 150"
       >
         <text
           ref={measureRef}
