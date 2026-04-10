@@ -28,6 +28,7 @@ export type DockProps = {
   dockHeight?: number;
   magnification?: number;
   spring?: SpringOptions;
+  currentPath?: string;
 };
 
 type DockItemProps = {
@@ -39,6 +40,7 @@ type DockItemProps = {
   distance: number;
   baseItemSize: number;
   magnification: number;
+  isActive?: boolean;
 };
 
 function DockItem({
@@ -50,8 +52,9 @@ function DockItem({
   distance,
   magnification,
   baseItemSize,
+  isActive = false,
 }: DockItemProps) {
-  const ref = useRef<HTMLAnchorElement>(null);
+  const ref = useRef<HTMLDivElement & HTMLAnchorElement>(null);
   const isHovered = useMotionValue(0);
 
   const mouseDistance = useTransform(mouseX, (val) => {
@@ -65,31 +68,39 @@ function DockItem({
   const targetSize = useTransform(
     mouseDistance,
     [-distance, 0, distance],
-    [baseItemSize, magnification, baseItemSize],
+    [baseItemSize, isActive ? baseItemSize : magnification, baseItemSize],
   );
   const size = useSpring(targetSize, spring);
 
+  const sharedProps = {
+    ref,
+    style: { width: size, height: size },
+    onHoverStart: () => isHovered.set(1),
+    onHoverEnd: () => isHovered.set(0),
+    onFocus: () => isHovered.set(1),
+    onBlur: () => isHovered.set(0),
+    className: `relative inline-flex items-center justify-center rounded-full border-transparent border-2 shadow-md ${isActive ? "opacity-50 cursor-default" : ""} ${className}`,
+  };
+
+  const content = Children.map(children, (child) =>
+    React.isValidElement(child)
+      ? cloneElement(child as React.ReactElement<{ isHovered?: MotionValue<number> }>, {
+          isHovered,
+        })
+      : child,
+  );
+
+  if (isActive) {
+    return (
+      <motion.div {...sharedProps} aria-current="page">
+        {content}
+      </motion.div>
+    );
+  }
+
   return (
-    <motion.a
-      ref={ref}
-      href={href}
-      style={{
-        width: size,
-        height: size,
-      }}
-      onHoverStart={() => isHovered.set(1)}
-      onHoverEnd={() => isHovered.set(0)}
-      onFocus={() => isHovered.set(1)}
-      onBlur={() => isHovered.set(0)}
-      className={`relative inline-flex items-center justify-center rounded-full  border-transparent border-2 shadow-md ${className}`}
-    >
-      {Children.map(children, (child) =>
-        React.isValidElement(child)
-          ? cloneElement(child as React.ReactElement<{ isHovered?: MotionValue<number> }>, {
-              isHovered,
-            })
-          : child,
-      )}
+    <motion.a {...sharedProps} href={href}>
+      {content}
     </motion.a>
   );
 }
@@ -151,6 +162,7 @@ export default function Dock({
   panelHeight = 64,
   dockHeight = 256,
   baseItemSize = 50,
+  currentPath = "",
 }: DockProps) {
   const mouseX = useMotionValue(Infinity);
   const isHovered = useMotionValue(0);
@@ -197,6 +209,7 @@ export default function Dock({
             distance={distance}
             magnification={magnification}
             baseItemSize={baseItemSize}
+            isActive={currentPath === item.href}
           >
             <DockIcon>{item.icon}</DockIcon>
             <DockLabel>{item.label}</DockLabel>
