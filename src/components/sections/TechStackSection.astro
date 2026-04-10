@@ -1,0 +1,21 @@
+---
+import CurvedLoop from "@/components/CurvedLoop";
+---
+
+<div class="w-full bg-shadow-grey">
+  <h2
+    class="text-3xl lg:text-4xl font-extrabold tracking-tight text-frosted-blue uppercase mb-6 text-center mx-auto max-w-4xl"
+  >
+    Tech Stack
+  </h2>
+
+  <div class="-my-96 overflow-hidden max-h-[80vh]">
+    <CurvedLoop
+      className="max-h-96 relative"
+      client:load
+      marqueeText="Typescript ✦ React ✦ Remix ✦ NextJS ✦ SASS ✦ Tailwind CSS ✦ NodeJS ✦ Express ✦ GraphQL ✦ Docker ✦"
+      speed={1}
+      curveAmount={400}
+    />
+  </div>
+</div>
