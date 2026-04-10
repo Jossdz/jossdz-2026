@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@source "../pages/**/*.astro";
+@source "../components/**/*.{tsx,ts,astro}";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 @import "@fontsource-variable/inter";

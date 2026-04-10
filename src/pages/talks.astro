@@ -1,14 +1,15 @@
 ---
 import "@/styles/global.css";
 import Layout from "@/layouts/Layout.astro";
+import TalksGrid from "@/components/TalksGrid";
 ---
 
 <Layout>
-  <section class="min-h-screen flex flex-col items-center justify-center px-8 py-24 text-white">
-    <h1 class="text-4xl font-bold mb-4">Talks</h1>
-    <p class="text-neutral-400 text-lg max-w-xl text-center">
-      A collection of talks, presentations, and conferences I've participated in.
-      Content coming soon.
+  <section class="min-h-screen px-6 pt-20 pb-32 max-w-7xl mx-auto">
+    <h1 class="text-9xl font-bold leading-none text-ghost-white">Talks</h1>
+    <p class="text-pale-slate text-xl mt-1 mb-16">
+      Conferences, workshops, and presentations.
     </p>
+    <TalksGrid client:load />
   </section>
 </Layout>
