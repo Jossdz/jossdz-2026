@@ -1,5 +1,6 @@
 ---
 import { LayoutDock } from "@/components/LayoutDoc";
+import { Footer } from "@/components/Footer";
 ---
 
 <html lang="en">
@@ -8,9 +9,10 @@ import { LayoutDock } from "@/components/LayoutDoc";
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jossdz 2026</title>
   </head>
-  <body>
+  <body class="bg-shadow-grey">
     <div class="min-h-screen w-full">
       <slot />
+      <Footer client:load />
       <LayoutDock client:load />
     </div>
   </body>
