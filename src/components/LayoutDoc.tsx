@@ -3,10 +3,10 @@ import Dock from "./Dock";
 
 const LayoutDock = () => {
   const items = [
-    { icon: <VscHome size={18} />, label: "Home", onClick: () => alert("Home!") },
-    { icon: <VscArchive size={18} />, label: "Archive", onClick: () => alert("Archive!") },
-    { icon: <VscAccount size={18} />, label: "Profile", onClick: () => alert("Profile!") },
-    { icon: <VscSettingsGear size={18} />, label: "Settings", onClick: () => alert("Settings!") },
+    { icon: <VscHome size={20} />, label: "Home", onClick: () => alert("Home!") },
+    { icon: <VscArchive size={20} />, label: "Archive", onClick: () => alert("Archive!") },
+    { icon: <VscAccount size={20} />, label: "Profile", onClick: () => alert("Profile!") },
+    { icon: <VscSettingsGear size={20} />, label: "Settings", onClick: () => alert("Settings!") },
   ];
 
   return <Dock items={items} />;
