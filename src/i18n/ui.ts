@@ -21,6 +21,7 @@ export const ui = {
     "about.cta.linkedin": "Connect on LinkedIn",
     "techstack.title": "Tech Stack",
     "experience.title": "Experience",
+    "experience.subtitle": "Roles, companies, and the work behind them.",
     "experience.description":
       "My professional journey, roles, and the projects I've worked on over the years. Content coming soon.",
     "talks.title": "Talks",
@@ -29,8 +30,7 @@ export const ui = {
     "settings.title": "Config",
     "settings.subtitle": "Preferences and configuration options.",
     "settings.language.title": "Language",
-    "settings.language.description":
-      "Select your preferred language for the site interface.",
+    "settings.language.description": "Select your preferred language for the site interface.",
   },
   es: {
     "nav.home": "Inicio",
@@ -47,6 +47,7 @@ export const ui = {
     "about.cta.linkedin": "Conectar en LinkedIn",
     "techstack.title": "Stack Tecnológico",
     "experience.title": "Experiencia",
+    "experience.subtitle": "Roles, empresas y el trabajo detrás de ellos.",
     "experience.description":
       "Mi trayectoria profesional, roles y los proyectos en los que he trabajado a lo largo de los años. Contenido próximamente.",
     "talks.title": "Charlas",
@@ -55,8 +56,7 @@ export const ui = {
     "settings.title": "Configuración",
     "settings.subtitle": "Preferencias y opciones de configuración.",
     "settings.language.title": "Idioma",
-    "settings.language.description":
-      "Selecciona tu idioma preferido para la interfaz del sitio.",
+    "settings.language.description": "Selecciona tu idioma preferido para la interfaz del sitio.",
   },
 } as const;
 

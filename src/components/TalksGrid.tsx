@@ -22,7 +22,8 @@ const talks: Talk[] = [
     title: "Sanity and Remix",
     place: "Remix Mexico",
     date: "2022-04-20",
-    description: "Intro to Sanity as a headless CMS and how it pairs with Remix for full-stack development.",
+    description:
+      "Intro to Sanity as a headless CMS and how it pairs with Remix for full-stack development.",
     slides: "https://sanity-mix.vercel.app/",
   },
   {
@@ -120,7 +121,13 @@ function formatDate(dateStr: string, lang: string) {
   });
 }
 
-export default function TalksGrid({ lang = "en", viewSlides = "View Slides" }: { lang?: string; viewSlides?: string }) {
+export default function TalksGrid({
+  lang = "en",
+  viewSlides = "View Slides",
+}: {
+  lang?: string;
+  viewSlides?: string;
+}) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {talks.map((talk, i) => (
