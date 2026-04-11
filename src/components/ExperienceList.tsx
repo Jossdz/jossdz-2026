@@ -126,7 +126,7 @@ function ProjectCard({ label }: { label: string }) {
     <div
       style={{
         flex: "1 1 0",
-        minWidth: 120,
+        minWidth: 80,
         height: 80,
         border: "1.5px dashed rgba(177,229,242,0.3)",
         borderRadius: 12,
@@ -155,8 +155,8 @@ export default function ExperienceList({ lang = "en" }: { lang?: string }) {
           {/* Experience section */}
           <div
             style={{
-              paddingTop: 64,
-              paddingBottom: 64,
+              paddingTop: 20,
+              paddingBottom: 20,
             }}
           >
             {/* Company header */}

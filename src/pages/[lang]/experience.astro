@@ -15,8 +15,13 @@ const t = useTranslations(lang);
 
 <Layout lang={lang}>
   <section class="min-h-screen px-6 pt-20 pb-32 max-w-5xl mx-auto">
-    <h1 class="text-9xl font-bold leading-none text-ghost-white">{t("experience.title")}</h1>
-    <p class="text-pale-slate text-xl mt-1 mb-16">
+    <h1
+      class="font-bold leading-none text-ghost-white"
+      style="font-size: clamp(1.5rem, 13vw, 8rem)"
+    >
+      {t("experience.title")}
+    </h1>
+    <p class="text-pale-slate text-sm md:text-xl mt-1">
       {t("experience.subtitle")}
     </p>
     <ExperienceList lang={lang} client:load />
