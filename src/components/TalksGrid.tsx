@@ -107,15 +107,20 @@ const talks: Talk[] = [
   },
 ];
 
-function formatDate(dateStr: string) {
-  return new Date(dateStr).toLocaleDateString("en-US", {
+const localeMap: Record<string, string> = {
+  en: "en-US",
+  es: "es-MX",
+};
+
+function formatDate(dateStr: string, lang: string) {
+  return new Date(dateStr).toLocaleDateString(localeMap[lang] ?? "en-US", {
     year: "numeric",
     month: "short",
     timeZone: "UTC",
   });
 }
 
-export default function TalksGrid() {
+export default function TalksGrid({ lang = "en", viewSlides = "View Slides" }: { lang?: string; viewSlides?: string }) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {talks.map((talk, i) => (
@@ -180,7 +185,7 @@ export default function TalksGrid() {
                 flexShrink: 0,
               }}
             >
-              {formatDate(talk.date)}
+              {formatDate(talk.date, lang)}
             </span>
           </div>
 
@@ -246,7 +251,7 @@ export default function TalksGrid() {
                 }}
               >
                 <VscLinkExternal size={11} />
-                View Slides
+                {viewSlides}
               </a>
             </div>
           )}

@@ -1,12 +1,18 @@
 ---
 import CurvedLoop from "@/components/CurvedLoop";
+import { useTranslations } from "@/i18n/utils";
+import type { Lang } from "@/i18n/ui";
+
+type Props = { lang?: Lang };
+const { lang = "en" } = Astro.props;
+const t = useTranslations(lang);
 ---
 
 <div class="w-full bg-shadow-grey">
   <h2
     class="text-3xl lg:text-4xl font-extrabold tracking-tight text-frosted-blue uppercase mb-6 text-center mx-auto max-w-4xl"
   >
-    Tech Stack
+    {t("techstack.title")}
   </h2>
 
   <div class="overflow-hidden h-28 sm:h-40 md:h-56 lg:h-72 xl:h-96 2xl:h-[32rem] mb-12">

@@ -1,15 +1,3 @@
 ---
-import "@/styles/global.css";
-import Layout from "@/layouts/Layout.astro";
-import TalksGrid from "@/components/TalksGrid";
+return Astro.redirect("/en/talks");
 ---
-
-<Layout>
-  <section class="min-h-screen px-6 pt-20 pb-32 max-w-7xl mx-auto">
-    <h1 class="text-9xl font-bold leading-none text-ghost-white">Talks</h1>
-    <p class="text-pale-slate text-xl mt-1 mb-16">
-      Conferences, workshops, and presentations.
-    </p>
-    <TalksGrid client:load />
-  </section>
-</Layout>

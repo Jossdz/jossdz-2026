@@ -1,6 +1,12 @@
 ---
 import SplitText from "@/components/SplitText";
 import TiltedCard from "@/components/TiltedCard";
+import { useTranslations } from "@/i18n/utils";
+import type { Lang } from "@/i18n/ui";
+
+type Props = { lang?: Lang };
+const { lang = "en" } = Astro.props;
+const t = useTranslations(lang);
 ---
 
 <div class="w-full bg-shadow-grey">
@@ -29,7 +35,7 @@ import TiltedCard from "@/components/TiltedCard";
       <div class="">
         <SplitText
           client:idle
-          text="Hey there 👋"
+          text={t("about.greeting")}
           className="text-2xl font-semibold text-center text-silver"
           delay={50}
           duration={1.25}
@@ -42,26 +48,17 @@ import TiltedCard from "@/components/TiltedCard";
           textAlign="center"
         />
         <p class="text-base leading-relaxed text-ghost-white opacity-80 mt-6">
-          I'm a Senior Frontend Engineer with 8 years of experience building web
-          systems that reach millions of users — delivering robust,
-          production-ready code with a strong focus on long-term quality and
-          maintainability. I specialize in React, TypeScript, and Node.js, and
-          I'm known for taking ownership of complex problems, raising team
-          standards, and establishing the kind of shared best practices that
-          make engineering cultures stronger.
+          {t("about.bio1")}
         </p>
         <p class="text-base leading-relaxed text-ghost-white opacity-80 mt-6">
-          I also mentor and teach. I've guided 230+ developers through fullstack
-          engineering with JavaScript and TypeScript, and I design curriculum
-          for industry professionals. Are you looking for someone who can own
-          the frontend and elevate the team around them?
+          {t("about.bio2")}
         </p>
         <div class="flex flex-col gap-3 mt-8 sm:flex-row sm:flex-wrap">
           <a
             href="mailto:carloscorrea.dev@gmail.com?subject=Let's%20Work%20Together"
             class="px-6 py-2.5 rounded-full border border-silver text-silver text-sm font-medium hover:bg-silver hover:text-shadow-grey transition-colors duration-200 text-center sm:w-auto w-full"
           >
-            Get in touch
+            {t("about.cta.email")}
           </a>
           <a
             href="https://www.linkedin.com/in/jossdz"
@@ -72,7 +69,7 @@ import TiltedCard from "@/components/TiltedCard";
             onmouseover="this.style.backgroundColor='#004182'"
             onmouseout="this.style.backgroundColor='#0A66C2'"
           >
-            Connect on LinkedIn
+            {t("about.cta.linkedin")}
           </a>
         </div>
       </div>

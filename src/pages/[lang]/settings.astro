@@ -1,0 +1,55 @@
+---
+import "@/styles/global.css";
+import Layout from "@/layouts/Layout.astro";
+import { languages, type Lang } from "@/i18n/ui";
+
+const langMeta: Record<string, { flag: string; label: string }> = {
+  en: { flag: "🇺🇸", label: "English" },
+  es: { flag: "🇲🇽", label: "Español" },
+};
+import { useTranslations } from "@/i18n/utils";
+
+export function getStaticPaths() {
+  return Object.keys(languages).map((lang) => ({ params: { lang } }));
+}
+
+const { lang } = Astro.params as { lang: Lang };
+const t = useTranslations(lang);
+---
+
+<Layout lang={lang}>
+  <section class="min-h-screen px-6 pt-20 pb-32 max-w-7xl mx-auto">
+    <h1 class="text-9xl font-bold leading-none text-ghost-white">{t("settings.title")}</h1>
+    <p class="text-pale-slate text-xl mt-1 mb-16">
+      {t("settings.subtitle")}
+    </p>
+
+    <div class="space-y-12">
+      <!-- Language -->
+      <div>
+        <h2 class="text-ghost-white text-2xl font-semibold mb-4">{t("settings.language.title")}</h2>
+        <p class="text-pale-slate text-sm mb-6">
+          {t("settings.language.description")}
+        </p>
+        <div class="flex gap-3">
+          {
+            Object.entries(languages).map(([code, label]) => (
+              <a
+                href={`/${code}/settings`}
+                class={`inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border text-sm font-medium transition-colors ${
+                  code === lang
+                    ? "border-ghost-white bg-ghost-white text-raisin-black"
+                    : "border-pale-slate text-pale-slate hover:border-ghost-white hover:text-ghost-white"
+                }`}
+                aria-pressed={code === lang ? "true" : "false"}
+              >
+                <span class="text-base leading-none">{langMeta[code]?.flag}</span>
+                {langMeta[code]?.label ?? label}
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

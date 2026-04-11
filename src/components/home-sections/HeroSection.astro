@@ -1,5 +1,11 @@
 ---
 import LineWaves from "@/components/LineWaves";
+import { useTranslations } from "@/i18n/utils";
+import type { Lang } from "@/i18n/ui";
+
+type Props = { lang?: Lang };
+const { lang = "en" } = Astro.props;
+const t = useTranslations(lang);
 ---
 
 <div class="w-full relative h-screen bg-shadow-grey">
@@ -27,7 +33,7 @@ import LineWaves from "@/components/LineWaves";
     </h1>
 
     <h2 class="text-xl sm:text-2xl md:text-4xl font-bold text-ghost-white opacity-85">
-      Web Engineer | React Enthusiast | Educator
+      {t("hero.subtitle")}
     </h2>
   </div>
   <div
