@@ -45,6 +45,7 @@ type Project = {
   label: string;
   image?: string;
   href?: string;
+  description?: string | { en: string; es: string };
 };
 
 type Role = {
@@ -57,7 +58,7 @@ type Experience = {
   roles: Role[];
   location: string;
   modality: string;
-  description: string | { en: string; es: string };
+  description?: string | { en: string; es: string };
   tech: TechIcon[];
   projects: Project[];
   model?: string;
@@ -205,15 +206,20 @@ const experiences: Experience[] = [
     roles: [{ title: "Independent Contractor", period: "2017 — Present" }],
     location: "Remote",
     modality: "Contract",
-    description:
-      "Partnered with startups and agencies to deliver production-grade web applications. Projects range from marketing sites to complex SPAs. Consistent focus on performance, maintainability, and shipping on time.",
     tech: [
       { name: "React", color: "#61DAFB", icon: <SiReact /> },
       { name: "Next.js", color: "#ffffff", icon: <SiNextdotjs /> },
       { name: "Remix", color: "#ffffff", icon: <SiRemix /> },
       { name: "TypeScript", color: "#3178C6", icon: <SiTypescript /> },
+      { name: "MongoDB", color: "#47A248", icon: <SiMongodb /> },
+      { name: "JavaScript", color: "#F7DF1E", icon: <SiJavascript /> },
     ],
-    projects: [{ label: "Client Projects" }, { label: "Consulting" }, { label: "Open Source" }],
+    projects: [
+      {
+        label: "Furniture Banks",
+        description: "Full-stack platform built with Next.js and MongoDB to manage furniture donation banks. Includes authentication, inventory tracking, and an admin dashboard.",
+      },
+    ],
   },
 ];
 
@@ -227,8 +233,9 @@ const cardBaseStyle: React.CSSProperties = {
   border: "1px solid rgba(255,255,255,0.08)",
 };
 
-function ProjectCard({ label, image, href }: Project) {
+function ProjectCard({ label, image, href, description, lang = "en" }: Project & { lang?: string }) {
   const [hovered, setHovered] = React.useState(false);
+  const resolvedDesc = description ? resolveDescription(description, lang) : undefined;
 
   const inner = (
     <div
@@ -280,22 +287,35 @@ function ProjectCard({ label, image, href }: Project) {
 
   const wrapStyle: React.CSSProperties = { flex: "1 1 0", minWidth: 140 };
 
-  if (href) {
-    return (
-      <a
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="project-card-wrap"
-        style={{ ...wrapStyle, textDecoration: "none" }}
-      >
-        {inner}
-      </a>
-    );
-  }
-  return (
-    <div className="project-card-wrap" style={wrapStyle}>
+  const cardEl = href ? (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="project-card-wrap"
+      style={{ textDecoration: "none", display: "block" }}
+    >
       {inner}
+    </a>
+  ) : (
+    <div className="project-card-wrap">{inner}</div>
+  );
+
+  return (
+    <div style={wrapStyle}>
+      {cardEl}
+      {resolvedDesc && (
+        <p
+          style={{
+            margin: "10px 0 0",
+            fontSize: 13,
+            color: "#c8c9d3",
+            lineHeight: 1.7,
+          }}
+        >
+          {resolvedDesc}
+        </p>
+      )}
     </div>
   );
 }
@@ -451,26 +471,28 @@ export default function ExperienceList({ lang = "en" }: { lang?: string }) {
             </div>
 
             {/* Description */}
-            <div
-              style={{
-                borderRadius: 10,
-                border: "1px solid rgba(255,255,255,0.08)",
-                backgroundColor: "rgba(255,255,255,0.03)",
-                padding: "16px 20px",
-                marginBottom: 24,
-              }}
-            >
-              <p
+            {exp.description && (
+              <div
                 style={{
-                  margin: 0,
-                  fontSize: 14,
-                  color: "#c8c9d3",
-                  lineHeight: 1.8,
+                  borderRadius: 10,
+                  border: "1px solid rgba(255,255,255,0.08)",
+                  backgroundColor: "rgba(255,255,255,0.03)",
+                  padding: "16px 20px",
+                  marginBottom: 24,
                 }}
               >
-                {resolveDescription(exp.description, lang)}
-              </p>
-            </div>
+                <p
+                  style={{
+                    margin: 0,
+                    fontSize: 14,
+                    color: "#c8c9d3",
+                    lineHeight: 1.8,
+                  }}
+                >
+                  {resolveDescription(exp.description, lang)}
+                </p>
+              </div>
+            )}
 
             {/* Tech icons */}
             <div
@@ -516,7 +538,7 @@ export default function ExperienceList({ lang = "en" }: { lang?: string }) {
               }}
             >
               {exp.projects.map((p) => (
-                <ProjectCard key={p.label} {...p} />
+                <ProjectCard key={p.label} {...p} lang={lang} />
               ))}
             </div>
           </div>
