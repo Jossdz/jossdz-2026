@@ -128,6 +128,17 @@
   overflow: hidden;
 }
 
+.projects-single {
+  justify-content: flex-start;
+}
+
+@media (min-width: 1024px) {
+  .projects-single .project-card-wrap {
+    flex: 0 0 50% !important;
+    max-width: 50%;
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

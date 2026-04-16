@@ -8,5 +8,6 @@ export default defineConfig({
   // TODO: Add the correct site URL here.
   site: "https://example.com",
   vite: { plugins: [tailwindcss()] },
+  prefetch: { prefetchAll: false, defaultStrategy: "hover" },
   integrations: [react(), sitemap()],
 });

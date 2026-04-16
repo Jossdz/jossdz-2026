@@ -10,7 +10,6 @@ import {
   AnimatePresence,
 } from "motion/react";
 import React, { Children, cloneElement, useEffect, useMemo, useRef, useState } from "react";
-import GlassSurface from "./GlassSurface";
 
 export type DockItemData = {
   icon: React.ReactNode;
@@ -99,7 +98,7 @@ function DockItem({
   }
 
   return (
-    <motion.a {...sharedProps} href={href}>
+    <motion.a {...sharedProps} href={href} data-astro-prefetch="hover">
       {content}
     </motion.a>
   );
@@ -193,11 +192,16 @@ export default function Dock({
         role="toolbar"
         aria-label="Application dock"
       >
-        <GlassSurface
-          width="100%"
-          height="100%"
-          borderRadius={16}
-          style={{ position: "absolute", inset: 0 }}
+        <div
+          className="absolute inset-0 rounded-2xl"
+          style={{
+            background: "rgba(255, 255, 255, 0.08)",
+            backdropFilter: "blur(20px) saturate(1.8) brightness(1.1)",
+            WebkitBackdropFilter: "blur(20px) saturate(1.8) brightness(1.1)",
+            border: "1px solid rgba(255, 255, 255, 0.15)",
+            boxShadow:
+              "inset 0 1px 0 0 rgba(255, 255, 255, 0.18), inset 0 -1px 0 0 rgba(255, 255, 255, 0.08), 0 4px 24px rgba(0, 0, 0, 0.2)",
+          }}
         />
         {items.map((item, index) => (
           <DockItem

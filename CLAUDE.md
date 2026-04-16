@@ -8,7 +8,7 @@ Wraps Vite, Rolldown, Vitest, Oxlint, Oxfmt, tsdown. All ops go through `vp`. **
 
 ```bash
 vp install          # install deps (after pull)
-vp dev              # Astro dev server
+vp run dev              # Astro dev server
 vp build            # tsc + astro build
 vp preview          # preview prod build
 vp check            # fmt + lint + tsc
