@@ -227,6 +227,9 @@ export default function LineWaves({
     });
 
     const mesh = new Mesh(gl, { geometry, program });
+
+    gl.canvas.style.opacity = "0";
+    gl.canvas.style.transition = "opacity 0.8s ease-in-out";
     container.appendChild(gl.canvas);
 
     if (enableMouseInteraction) {
@@ -235,6 +238,7 @@ export default function LineWaves({
     }
 
     let animationFrameId: number;
+    let firstFrame = true;
 
     function update(time: number) {
       animationFrameId = requestAnimationFrame(update);
@@ -251,6 +255,11 @@ export default function LineWaves({
       }
 
       renderer.render({ scene: mesh });
+
+      if (firstFrame) {
+        firstFrame = false;
+        gl.canvas.style.opacity = "1";
+      }
     }
     animationFrameId = requestAnimationFrame(update);
 
