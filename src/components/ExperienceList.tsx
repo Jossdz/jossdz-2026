@@ -6,6 +6,7 @@ import {
   SiNextdotjs,
   SiJavascript,
   SiRemix,
+  SiReactrouter,
   SiStorybook,
   SiDocker,
   SiExpress,
@@ -72,13 +73,16 @@ const experiences: Experience[] = [
     ],
     location: "Remote",
     modality: "Full-time",
-    description:
-      "At Team Liquid, I grew from Frontend Developer to Frontend Engineer, helping build and scale fan-facing digital experiences used by millions globally. My work spanned pixel-perfect implementation, React and TypeScript modernization, component standardization, developer experience improvements, and the delivery of high-visibility projects like Liquid Vault and WoW Race to World First. I collaborated closely with teams across Design, Fan Support, Translations, backend, mobile, and frontend, and in my final stage there I took on direct stakeholder management for Webflow projects, leading the development of business-critical pages from request to launch.",
+    description: {
+      en: "At Team Liquid, I grew from Frontend Developer to Frontend Engineer, helping build and scale fan-facing digital experiences used by millions globally. My work spanned pixel-perfect implementation, React and TypeScript modernization, component standardization, developer experience improvements, and the delivery of high-visibility projects like Liquid Vault and WoW Race to World First. I collaborated closely with teams across Design, Fan Support, Translations, backend, mobile, and frontend, and in my final stage there I took on direct stakeholder management for Webflow projects, leading the development of business-critical pages from request to launch.",
+      es: "En Team Liquid, crecí de Frontend Developer a Frontend Engineer, ayudando a construir y escalar experiencias digitales para fans usadas por millones de personas en todo el mundo. Mi trabajo abarcó implementación pixel-perfect, modernización de React y TypeScript, estandarización de componentes, mejoras en la experiencia del desarrollador y la entrega de proyectos de alta visibilidad como Liquid Vault y WoW Race to World First. Colaboré estrechamente con equipos de Diseño, Fan Support, Traducciones, backend, mobile y frontend, y en mi etapa final asumí la gestión directa de stakeholders para proyectos en Webflow, liderando el desarrollo de páginas críticas para el negocio desde la solicitud hasta el lanzamiento.",
+    },
     tech: [
       // Frontend
       { name: "React", color: "#61DAFB", icon: <SiReact /> },
       { name: "React Native", color: "#61DAFB", icon: <SiReact /> },
       { name: "TypeScript", color: "#3178C6", icon: <SiTypescript /> },
+      { name: "React Router 7", color: "#CA4245", icon: <SiReactrouter /> },
       { name: "i18n", color: "#a6a6a8" },
       { name: "Storybook", color: "#FF4785", icon: <SiStorybook /> },
       { name: "Webflow", color: "#4353FF", icon: <SiWebflow /> },

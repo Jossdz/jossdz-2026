@@ -1,7 +1,27 @@
-import { useRef, Suspense } from "react";
+import { useRef, Suspense, useState, useEffect } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { useGLTF, MeshTransmissionMaterial, Text } from "@react-three/drei";
 import type * as THREE from "three";
+
+function useInView(rootMargin = "200px") {
+  const ref = useRef<HTMLDivElement>(null);
+  const [mounted, setMounted] = useState(false);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !mounted) setMounted(true);
+        setVisible(entry.isIntersecting);
+      },
+      { rootMargin }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [rootMargin, mounted]);
+  return { ref, mounted, visible };
+}
 
 function Scene({ path, company }: { path: string; company: string }) {
   const ref = useRef<THREE.Group>(null);
@@ -31,6 +51,7 @@ function Scene({ path, company }: { path: string; company: string }) {
         {meshes.map((mesh, i) => (
           <mesh key={i} geometry={mesh.geometry}>
             <MeshTransmissionMaterial
+              samples={2}
               thickness={0.8}
               roughness={0}
               transmission={1}
@@ -38,7 +59,6 @@ function Scene({ path, company }: { path: string; company: string }) {
               chromaticAberration={0.04}
               distortion={0.15}
               distortionScale={0.3}
-              temporalDistortion={0.05}
               backside={true}
             />
           </mesh>
@@ -49,20 +69,25 @@ function Scene({ path, company }: { path: string; company: string }) {
 }
 
 export default function LogoModel({ path, company }: { path: string; company: string }) {
+  const { ref, mounted, visible } = useInView("200px");
   return (
-    <div style={{ width: "100%", height: 260, background: "#272635" }}>
-      <Canvas
-        style={{ width: "100%", height: "100%" }}
-        camera={{ position: [0, 0, 5], fov: 45 }}
-        gl={{ antialias: true, alpha: true }}
-      >
-        <ambientLight intensity={0.5} />
-        <directionalLight intensity={3} position={[5, 5, 5]} />
-        <directionalLight intensity={1} position={[-5, -5, -5]} />
-        <Suspense fallback={null}>
-          <Scene path={path} company={company} />
-        </Suspense>
-      </Canvas>
+    <div ref={ref} style={{ width: "100%", height: 260, background: "#272635" }}>
+      {mounted && (
+        <Canvas
+          style={{ width: "100%", height: "100%" }}
+          camera={{ position: [0, 0, 5], fov: 45 }}
+          gl={{ antialias: true, alpha: true }}
+          frameloop={visible ? "always" : "never"}
+          dpr={[1, 1.5]}
+        >
+          <ambientLight intensity={0.5} />
+          <directionalLight intensity={3} position={[5, 5, 5]} />
+          <directionalLight intensity={1} position={[-5, -5, -5]} />
+          <Suspense fallback={null}>
+            <Scene path={path} company={company} />
+          </Suspense>
+        </Canvas>
+      )}
     </div>
   );
 }
