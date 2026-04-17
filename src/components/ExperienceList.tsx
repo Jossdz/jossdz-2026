@@ -433,7 +433,7 @@ export default function ExperienceList({ lang = "en" }: { lang?: string }) {
             {exp.model ? (
               <div style={{ marginBottom: 20 }}>
                 <Suspense
-                  fallback={<div style={{ width: "100%", height: 260, background: "#272635" }} />}
+                  fallback={<div style={{ width: "100%", height: "clamp(180px, 40vw, 260px)", background: "#272635" }} />}
                 >
                   <LogoModel path={exp.model} company={exp.company} />
                 </Suspense>

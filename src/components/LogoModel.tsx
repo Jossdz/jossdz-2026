@@ -71,7 +71,7 @@ function Scene({ path, company }: { path: string; company: string }) {
 export default function LogoModel({ path, company }: { path: string; company: string }) {
   const { ref, mounted, visible } = useInView("200px");
   return (
-    <div ref={ref} style={{ width: "100%", height: 260, background: "#272635" }}>
+    <div ref={ref} style={{ width: "100%", height: "clamp(180px, 40vw, 260px)", background: "#272635" }}>
       {mounted && (
         <Canvas
           style={{ width: "100%", height: "100%" }}
