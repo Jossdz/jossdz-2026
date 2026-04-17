@@ -1,0 +1,24 @@
+# Jose Carlos Correa (Jossdz)
+> Senior Frontend Engineer with 8 years of experience building web systems at scale. Specializes in React, TypeScript, and Node.js. Mentor to 230+ developers. Public speaker on web engineering topics.
+
+## About
+Jose Carlos Correa is a Senior Frontend Engineer based in Mexico with 8 years of professional experience building production web systems used by millions of users globally. He specializes in React, TypeScript, Node.js, Remix, and Next.js. He is known for taking technical ownership of complex frontend problems, establishing engineering best practices, and mentoring engineering teams.
+
+## Professional Experience
+- Frontend Engineer at Team Liquid (2021–2026): Built and scaled fan-facing digital experiences for one of the world's largest esports organizations. Led React/TypeScript modernization, component standardization, and high-visibility projects including Liquid Vault and WoW Race to World First coverage.
+- Lead Instructor & Curriculum Designer at Ironhack (2018–2022): Mentored 231+ developers in fullstack JavaScript and TypeScript engineering. Designed and delivered a B2B React Native and TypeScript program focused on software architecture, SOLID principles, and TDD/BDD.
+- Course Creator at Platzi (2019): Designed and delivered a beginner course on building high-performance websites with Gatsby.js. Course achieved a 4.5/5 rating with 219 reviews.
+- Independent Contractor / Freelance (2017–present): Production-grade web applications for startups and agencies using React, Next.js, Remix, and TypeScript.
+
+## Speaking History
+12 public talks delivered between 2018 and 2022 at venues including Wizeline CDMX, Remix Mexico, AwesomeFest, Talent Land, Facebook Developer Circles, Bedu, and Ironhack Mexico. Topics covered: Remix, React, Redux, GraphQL, state management, and programming as a career.
+
+## Technical Skills
+TypeScript, React, Remix, Next.js, Node.js, Express, GraphQL, Docker, Tailwind CSS, SASS, React Native, PostgreSQL, MongoDB, Storybook, Vite, Webpack, Playwright, TanStack Query, Redux
+
+## Contact & Profiles
+- Website: https://jossdz.com
+- GitHub: https://github.com/jossdz
+- LinkedIn: https://www.linkedin.com/in/jossdz
+- Twitter/X: https://x.com/jossdz
+- Email: carloscorrea.dev@gmail.com

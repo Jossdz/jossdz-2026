@@ -11,14 +11,34 @@ export function getStaticPaths() {
 
 const { lang } = Astro.params as { lang: Lang };
 const t = useTranslations(lang);
+
+const titles: Record<Lang, string> = {
+  en: "Talks & Presentations — Jose Carlos Correa",
+  es: "Charlas y Presentaciones — Jose Carlos Correa",
+};
+
+const descriptions: Record<Lang, string> = {
+  en: "12 public talks on React, Remix, GraphQL, and JavaScript delivered at Wizeline, Facebook Dev Circles, Talent Land, and Ironhack (2018–2022).",
+  es: "12 charlas públicas sobre React, Remix, GraphQL y JavaScript en Wizeline, Facebook Dev Circles, Talent Land e Ironhack (2018–2022).",
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": `https://jossdz.com/${lang}/` },
+    { "@type": "ListItem", "position": 2, "name": t("talks.title"), "item": `https://jossdz.com/${lang}/talks` },
+  ],
+};
 ---
 
-<Layout lang={lang}>
+<Layout lang={lang} title={titles[lang]} description={descriptions[lang]} currentPath="/talks">
+  <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} slot="head" />
   <section class="min-h-screen px-6 pt-20 pb-32 max-w-7xl mx-auto">
     <h1 class="text-9xl font-bold leading-none text-ghost-white">{t("talks.title")}</h1>
     <p class="text-pale-slate text-xl mt-1 mb-16">
       {t("talks.subtitle")}
     </p>
-    <TalksGrid lang={lang} viewSlides={t("talks.viewSlides")} client:load />
+    <TalksGrid lang={lang} viewSlides={t("talks.viewSlides")} client:visible />
   </section>
 </Layout>

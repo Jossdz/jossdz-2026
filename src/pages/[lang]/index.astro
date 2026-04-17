@@ -11,9 +11,19 @@ export function getStaticPaths() {
 }
 
 const { lang } = Astro.params as { lang: Lang };
+
+const titles: Record<Lang, string> = {
+  en: "Jose Carlos Correa — Senior Frontend Engineer",
+  es: "Jose Carlos Correa — Ingeniero Frontend Senior",
+};
+
+const descriptions: Record<Lang, string> = {
+  en: "Senior Frontend Engineer with 8 years of experience building web systems for millions of users. React, TypeScript, and Node.js specialist. Educator who has mentored 230+ developers.",
+  es: "Ingeniero Frontend Senior con 8 años de experiencia construyendo sistemas web para millones de usuarios. Especialista en React, TypeScript y Node.js. Educador con más de 230 desarrolladores mentoreados.",
+};
 ---
 
-<Layout lang={lang}>
+<Layout lang={lang} title={titles[lang]} description={descriptions[lang]} currentPath="/">
   <HeroSection lang={lang} />
   <AboutSection lang={lang} />
   <TechStackSection lang={lang} />

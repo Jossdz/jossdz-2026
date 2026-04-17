@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://jossdz.com/en/</loc>
+    <lastmod>2026-04-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jossdz.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://jossdz.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jossdz.com/en/"/>
+  </url>
+  <url>
+    <loc>https://jossdz.com/es/</loc>
+    <lastmod>2026-04-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jossdz.com/en/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://jossdz.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jossdz.com/en/"/>
+  </url>
+  <url>
+    <loc>https://jossdz.com/en/experience</loc>
+    <lastmod>2026-04-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jossdz.com/en/experience"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://jossdz.com/es/experience"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jossdz.com/en/experience"/>
+  </url>
+  <url>
+    <loc>https://jossdz.com/es/experience</loc>
+    <lastmod>2026-04-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jossdz.com/en/experience"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://jossdz.com/es/experience"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jossdz.com/en/experience"/>
+  </url>
+  <url>
+    <loc>https://jossdz.com/en/talks</loc>
+    <lastmod>2026-04-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jossdz.com/en/talks"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://jossdz.com/es/talks"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jossdz.com/en/talks"/>
+  </url>
+  <url>
+    <loc>https://jossdz.com/es/talks</loc>
+    <lastmod>2026-04-16</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://jossdz.com/en/talks"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://jossdz.com/es/talks"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://jossdz.com/en/talks"/>
+  </url>
+</urlset>

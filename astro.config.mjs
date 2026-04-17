@@ -5,8 +5,7 @@ import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
-  // TODO: Add the correct site URL here.
-  site: "https://example.com",
+  site: "https://jossdz.com",
   vite: { plugins: [tailwindcss()] },
   prefetch: { prefetchAll: false, defaultStrategy: "hover" },
   integrations: [react(), sitemap()],

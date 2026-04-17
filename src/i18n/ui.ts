@@ -11,7 +11,7 @@ export const ui = {
     "nav.talks": "Talks",
     "nav.experience": "Experience",
     "nav.settings": "Settings",
-    "hero.subtitle": "Web Engineer | React Enthusiast | Educator",
+    "hero.subtitle": "Senior Frontend Engineer | React & TypeScript | Educator",
     "about.greeting": "Hey there 👋",
     "about.bio1":
       "I'm a Senior Frontend Engineer with 8 years of experience building web systems that reach millions of users — delivering robust, production-ready code with a strong focus on long-term quality and maintainability. I specialize in React, TypeScript, and Node.js, and I'm known for taking ownership of complex problems, raising team standards, and establishing the kind of shared best practices that make engineering cultures stronger.",
@@ -37,7 +37,7 @@ export const ui = {
     "nav.talks": "Charlas",
     "nav.experience": "Experiencia",
     "nav.settings": "Configuración",
-    "hero.subtitle": "Ingeniero Web | Entusiasta de React | Educador",
+    "hero.subtitle": "Ingeniero Frontend Senior | React & TypeScript | Educador",
     "about.greeting": "Hola 👋",
     "about.bio1":
       "Soy un Ingeniero Frontend Senior con 8 años de experiencia construyendo sistemas web que llegan a millones de usuarios — entregando código robusto y listo para producción con un fuerte enfoque en la calidad y mantenibilidad a largo plazo. Me especializo en React, TypeScript y Node.js, y soy conocido por tomar propiedad de problemas complejos, elevar los estándares del equipo y establecer las mejores prácticas compartidas que fortalecen las culturas de ingeniería.",

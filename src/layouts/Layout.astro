@@ -2,17 +2,147 @@
 import { LayoutDock } from "@/components/LayoutDoc";
 import { Footer } from "@/components/Footer";
 
-type Props = { lang?: string };
-const { lang = "en" } = Astro.props;
+type Props = {
+  lang?: string;
+  title?: string;
+  description?: string;
+  currentPath?: string;
+  noindex?: boolean;
+};
+
+const {
+  lang = "en",
+  title = "Jose Carlos Correa — Senior Frontend Engineer",
+  description = "Senior Frontend Engineer with 8 years of experience building web systems for millions of users. Specializes in React, TypeScript, and Node.js. Educator who has mentored 230+ developers.",
+  currentPath = "/",
+  noindex = false,
+} = Astro.props;
+
+const base = "https://jossdz.com";
+const canonical = `${base}/${lang}${currentPath === "/" ? "/" : currentPath}`;
+const ogImage = "https://avatars.githubusercontent.com/u/23535629?v=4";
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${base}/#website`,
+      url: `${base}/en/`,
+      name: "Jose Carlos Correa — Senior Frontend Engineer",
+      inLanguage: ["en", "es"],
+      author: { "@id": `${base}/#person` },
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": `${base}/en/#profilepage`,
+      url: `${base}/en/`,
+      about: { "@id": `${base}/#person` },
+      mainEntity: { "@id": `${base}/#person` },
+    },
+    {
+      "@type": "Person",
+      "@id": `${base}/#person`,
+      name: "Jose Carlos Correa",
+      alternateName: "Jossdz",
+      url: `${base}/en/`,
+      image: {
+        "@type": "ImageObject",
+        url: "https://avatars.githubusercontent.com/u/23535629?v=4",
+        width: 300,
+        height: 300,
+      },
+      email: "carloscorrea.dev@gmail.com",
+      jobTitle: "Senior Frontend Engineer",
+      description:
+        "Senior Frontend Engineer with 8 years of experience building web systems for millions of users. Specializes in React, TypeScript, and Node.js. Educator who has mentored 230+ developers.",
+      knowsAbout: [
+        "TypeScript",
+        "React",
+        "Next.js",
+        "Remix",
+        "Node.js",
+        "GraphQL",
+        "Docker",
+        "React Native",
+        "Frontend Engineering",
+      ],
+      sameAs: [
+        "https://linkedin.com/in/jossdz",
+        "https://github.com/jossdz",
+        "https://x.com/jossdz",
+      ],
+      worksFor: {
+        "@type": "Organization",
+        name: "Team Liquid",
+        url: "https://tl.gg",
+        sameAs: "https://en.wikipedia.org/wiki/Team_Liquid",
+      },
+    },
+  ],
+};
 ---
 
 <html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Jossdz 2026</title>
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
+
+    <!-- hreflang -->
+    <link
+      rel="alternate"
+      hreflang="en"
+      href={`${base}/en${currentPath === "/" ? "/" : currentPath}`}
+    />
+    <link
+      rel="alternate"
+      hreflang="es"
+      href={`${base}/es${currentPath === "/" ? "/" : currentPath}`}
+    />
+    <link
+      rel="alternate"
+      hreflang="x-default"
+      href={`${base}/en${currentPath === "/" ? "/" : currentPath}`}
+    />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:site_name" content="Jose Carlos Correa" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:site" content="@jossdz" />
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" type="image/svg+xml" />
+
+    <!-- Person / WebSite / ProfilePage schema -->
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(personSchema)}
+    />
+
+    <!-- Page-specific head (schema, etc.) -->
+    <slot name="head" />
   </head>
   <body class="bg-shadow-grey">
+    <!-- Static nav for crawlers (visually hidden) -->
+    <nav aria-label="Site navigation" class="sr-only">
+      <a href={`/${lang}/`}>Home</a>
+      <a href={`/${lang}/experience`}>Experience</a>
+      <a href={`/${lang}/talks`}>Talks</a>
+    </nav>
     <div class="min-h-screen w-full">
       <slot />
       <Footer client:load />

@@ -15,9 +15,14 @@ export function getStaticPaths() {
 
 const { lang } = Astro.params as { lang: Lang };
 const t = useTranslations(lang);
+
+const titles: Record<Lang, string> = {
+  en: "Settings — Jose Carlos Correa",
+  es: "Configuración — Jose Carlos Correa",
+};
 ---
 
-<Layout lang={lang}>
+<Layout lang={lang} title={titles[lang]} currentPath="/settings" noindex={true}>
   <section class="min-h-screen px-6 pt-20 pb-32 max-w-7xl mx-auto">
     <h1 class="text-9xl font-bold leading-none text-ghost-white">{t("settings.title")}</h1>
     <p class="text-pale-slate text-xl mt-1 mb-16">
