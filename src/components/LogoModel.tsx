@@ -38,7 +38,7 @@ function Scene({ path, company }: { path: string; company: string }) {
     <>
       <Text
         position={[0, 0, -0.5]}
-        fontSize={viewport.width / 5.5}
+        fontSize={viewport.width / 6.5}
         fontWeight={700}
         color="#e8e9f3"
         anchorX="center"
