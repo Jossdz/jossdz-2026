@@ -155,6 +155,7 @@ const experiences: Experience[] = [
     ],
   },
   {
+    model: "/Platzi.glb",
     company: "Platzi",
     roles: [{ title: "Course Creator and Instructor", period: "2019" }],
     location: "Mexico City",
