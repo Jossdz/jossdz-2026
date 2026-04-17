@@ -24,10 +24,7 @@ const titles: Record<Lang, string> = {
 
 <Layout lang={lang} title={titles[lang]} currentPath="/settings" noindex={true}>
   <section class="min-h-screen px-6 pt-20 pb-32 max-w-7xl mx-auto">
-    <h1
-      class="font-bold leading-none text-ghost-white"
-      style="font-size: clamp(2rem, 15vw, 10rem)"
-    >{t("settings.title")}</h1>
+    <h1 class="text-[clamp(2rem,15vw,10rem)] font-bold leading-none text-ghost-white">{t("settings.title")}</h1>
     <p class="text-pale-slate text-sm md:text-xl mt-4 mb-16">
       {t("settings.subtitle")}
     </p>
