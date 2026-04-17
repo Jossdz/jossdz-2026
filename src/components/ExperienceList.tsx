@@ -411,6 +411,7 @@ function RoleProgression({ roles }: { roles: Role[] }) {
 }
 
 function resolveDescription(description: Experience["description"], lang: string): string {
+  if (!description) return "";
   if (typeof description === "string") return description;
   return lang === "es" ? description.es : description.en;
 }
