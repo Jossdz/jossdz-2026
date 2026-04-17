@@ -29,7 +29,7 @@ function Scene({ path, company }: { path: string; company: string }) {
   const { viewport } = useThree();
 
   useFrame(() => {
-    if (ref.current) ref.current.rotation.y += 0.008;
+    if (ref.current) ref.current.rotation.y += 0.003;
   });
 
   const meshes = Object.values(gltf.nodes).filter((node): node is THREE.Mesh => node.isMesh);
@@ -38,7 +38,7 @@ function Scene({ path, company }: { path: string; company: string }) {
     <>
       <Text
         position={[0, 0, -0.5]}
-        fontSize={viewport.width / 8}
+        fontSize={viewport.width / 5.5}
         fontWeight={700}
         color="#e8e9f3"
         anchorX="center"
@@ -47,7 +47,7 @@ function Scene({ path, company }: { path: string; company: string }) {
       >
         {company.toUpperCase()}
       </Text>
-      <group ref={ref} scale={viewport.width / 10}>
+      <group ref={ref} scale={viewport.width / 7}>
         {meshes.map((mesh, i) => (
           <mesh key={i} geometry={mesh.geometry}>
             <MeshTransmissionMaterial
