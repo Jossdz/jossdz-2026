@@ -11,6 +11,14 @@ type Talk = {
 
 const talks: Talk[] = [
   {
+    title: "Fullstack Python",
+    place: "EBAC Online",
+    date: "2026-05-18",
+    description:
+      "Fullstack development with Python — building complete web applications from backend to frontend using Python tools and frameworks.",
+    slides: "https://canva.link/p0313s4hwyfztri",
+  },
+  {
     title: "Remix and the User Experience",
     place: "Wizeline CDMX",
     date: "2022-05-25",
